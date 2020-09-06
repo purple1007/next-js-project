@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Layout, {siteTitle} from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
+import Alert from '../components/alert'
 import Link from 'next/link'
 
+const AlertType = 'success'
 
 export default function Home() {
   return (
@@ -19,6 +21,7 @@ export default function Home() {
         <Link href="/posts/first-post">
           <a>Link to first post</a>
         </Link>
+        <Alert type={AlertType}>成功</Alert>
     </Layout>
     )
 }
