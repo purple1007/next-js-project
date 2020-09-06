@@ -10,11 +10,6 @@ export default function FirstPost() {
         <title>第一篇文章</title>
       </Head>
       <h1>First Post</h1>
-      <h2>
-        <Link href="/">
-          <a>Back Home</a>
-        </Link>
-      </h2>
     </Layout>
   )
 }
