@@ -3,10 +3,20 @@ import Layout, {siteTitle} from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import Alert from '../components/alert'
 import Link from 'next/link'
+import { getSortedPostsData } from '../lib/posts'
 
 const AlertType = 'success'
 
-export default function Home() {
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData()
+  return {
+    props : {
+      allPostsData
+    }
+  }
+}
+
+export default function Home({ allPostsData }) {
   return (
     <Layout home>
       <Head>
@@ -22,6 +32,18 @@ export default function Home() {
           <a>Link to first post</a>
         </Link>
         <Alert type={AlertType}>成功</Alert>
+        <ul className ={utilStyles.list}>
+          {allPostsData.map(({ id, date, title }) =>(
+            <li className={utilStyles.listItem} key={id}>
+              {title}
+              <br/>
+              {id}
+              <br/>
+              {date}
+            </li>
+            ))}
+        </ul>
+
     </Layout>
     )
 }
