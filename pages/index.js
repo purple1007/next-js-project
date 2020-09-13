@@ -28,9 +28,6 @@ export default function Home({ allPostsData }) {
           <a herf="https://nextjs.org/learn">our Next.js tutorial</a>.)
         </p>
       </section>
-        <Link href="/posts/first-post">
-          <a>Link to first post</a>
-        </Link>
         <Alert type={AlertType}>成功</Alert>
         <ul className ={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) =>(
