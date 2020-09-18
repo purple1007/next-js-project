@@ -1,7 +1,7 @@
 import Layout from '../../components/layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 
-export default function Post({ postData}) {
+export default function Post({ postData }) {
   return (
     <Layout>
       {postData.title}
@@ -9,6 +9,8 @@ export default function Post({ postData}) {
       {postData.id}
       <br />
       {postData.date}
+      <br />
+      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </Layout>
 
     )
@@ -26,8 +28,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+
   // Fetch necessary data for the blog post using parmas.id
-  const postData = getPostData(params.id)
+  // Use await when calling `getPostData`
+  const postData = await getPostData(params.id)
   return {
     props: {
       postData
